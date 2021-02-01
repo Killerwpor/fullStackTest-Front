@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from '../app/main/main.component';
+import { ListadoComponent } from './listado/listado.component';
+import { CambioComponent } from './cambio/cambio.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent }
+  { path: 'exchange', component: CambioComponent },
+  { path: 'list', component: ListadoComponent }
 ];
 
 @NgModule({

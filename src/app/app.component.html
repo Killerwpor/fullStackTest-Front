@@ -16,7 +16,7 @@
                  
                 <div class="col-6">
                     <li class="nav-item ">
-                        <a class="nav-link" id="option1" href="#1" (click)="click(1)">REALIZAR CAMBIO</a>
+                        <a class="nav-link" id="option1" [routerLink]="['/exchange']" (click)="click(1)">REALIZAR CAMBIO</a>
                          <div class="lineL"></div> 
                       </li>
                     </div>
@@ -24,7 +24,7 @@
 
                 
                       <li class="nav-item">
-                        <a class="nav-link" id="option2" href="#2" (click)="click(2)">LISTADO DE MONEDAS</a>
+                        <a class="nav-link" id="option2" [routerLink]="['/list']" (click)="click(2)">LISTADO DE MONEDAS</a>
                          <div class="lineR"></div>
                       </li>
                     </div>
@@ -37,7 +37,6 @@
     
          
           <div class="card-body">
-            TEST
             <router-outlet></router-outlet>
           </div>
         </div>
