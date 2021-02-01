@@ -1,0 +1,71 @@
+$white: #fff
+$textColor: #4A4A4A
+
+.fondo
+    background-color: white
+    height: 100vh
+    width: 100%
+
+.box
+    background: $white url("../assets/footer.png") no-repeat fixed bottom
+
+    height: 100vh
+
+@media (min-width: 1400px)
+    .box
+        background-size: 68%
+    .card
+        height: 700px
+
+@media (min-width: 1200px) and (max-width: 1400px)
+    .box
+        background-size: 95%
+    .card
+        height: 620px
+
+@media (min-width: 1024px) and (max-width: 1200px)
+    .box
+        background-size: 94%
+    .card
+        height: 650px
+
+.card
+    margin-left: 5%
+    background-color: white
+    width: 90%
+    border: 1px groove #f2f2f2
+    margin-top: 7%
+
+.card-header
+    margin-top: 50px
+
+.nav-link
+    color: #4A4A4A
+    font-weight: 500
+    font-size: 20px
+
+.card-header
+    background-color: white
+
+.marginRight
+    position: relative
+    left: 45%
+
+.active
+    color: #0076FF
+    font-weight: 600
+
+.lineL
+    position: relative
+    top: 12px
+    right: 35px
+    width: 110%
+    border-bottom: 12px solid #0076FF
+    display: none
+
+.lineR
+    position: relative
+    top: 12px
+    width: 108%
+    border-bottom: 12px solid #0076FF
+    display: none
