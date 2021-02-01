@@ -1,1 +1,15 @@
-<p>cambio works!</p>
+<div class="container-fluid">
+    <h2>Realizar cambio</h2>
+    <h4 clasS="textGrey">Seleccione las monedas</h4>
+    <div class="peso"></div>
+        <input type="text" class="form-control inputRound mx-auto text-center" [(ngModel)]="cantidad" placeholder="0.00" id="exampleFormControlInput1">
+        <span class="peso">$</span>
+        <input type="text" class="form-control inputRoundDiferente mx-auto text-center" [(ngModel)]="monedaBase" id="exampleFormControlInput1" >
+        <input type="text" class="form-control inputRound mx-auto text-center" [(ngModel)]="monedaConvertir" id="exampleFormControlInput1">  
+        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <input type="text" class="form-control inputRound mx-auto text-center" [(ngModel)]="conversion" value="0.00" id="exampleFormControlInput1" disabled>
+        <div class="peso">$</div>
+         
+        <img class="exchangePicture" src="assets/exchange.png" (click)="convertir()"> 
+
+</div>
