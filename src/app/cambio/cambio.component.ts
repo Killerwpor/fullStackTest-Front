@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ServiceBNCService } from '../service-bnc.service';
 
 @Component({
@@ -15,10 +16,14 @@ export class CambioComponent implements OnInit {
   token: any;
   conversion: any=0;
 
-  constructor(private service: ServiceBNCService) { }
+  constructor(private service: ServiceBNCService, public activatedRoute: ActivatedRoute) { }
 
    ngOnInit(): void {
-   
+    this.activatedRoute.queryParams.subscribe(params => {
+  const parametros = params["coin"];
+  if(parametros)
+      this.monedaConvertir=parametros;
+    });
    
      this.token=this.obtenerToken().then((result)=>{
        this.token=result;
@@ -34,21 +39,23 @@ export class CambioComponent implements OnInit {
 this.conversion= await this.convertirAux()
   }
 
-  async convertirAux(){     
+  cambiarMonedas(){
+    let aux=this.monedaBase;
+    this.monedaBase=this.monedaConvertir;
+    this.monedaConvertir=aux;
+    this.convertir();
+  }
+
+  async convertirAux(){ 
     const idMonedaBase=await this.traerId(this.monedaBase);
     const idMonedaConvertir=await this.traerId(this.monedaConvertir);
     return new Promise((resolve,reject)=>{    
-    //ConseguirIdMonedas
-   
+    //ConseguirIdMonedas   
     //Sacar precio ambas monedas
     this.service.consultarPrecio(this.token,idMonedaBase).subscribe(
       result => {    
         this.service.consultarPrecio(this.token,idMonedaConvertir).subscribe(
           result2 => {  
-
-            console.log(this.cantidad);
-            console.log(result.content[0].price);
-            console.log(result2.content[0].price)
           resolve((this.cantidad*result.content[0].price)/result2.content[0].price)
          }
        );  
@@ -72,7 +79,6 @@ this.conversion= await this.convertirAux()
   }
 
   async traerId(moneda){
-       //traer todos los assets    
        this.assets=await this.traerAssets();
     return new Promise((resolve,reject)=>{
       let obj = this.assets.find((o, k) => {

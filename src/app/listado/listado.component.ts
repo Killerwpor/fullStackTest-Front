@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { promise } from 'protractor';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+
 import { ServiceBNCService } from '../service-bnc.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-listado',
@@ -14,10 +17,9 @@ export class ListadoComponent implements OnInit {
   limite: number=7;
   token: unknown;
 
-  constructor(private service: ServiceBNCService) { }
+  constructor(private service: ServiceBNCService, private router : Router) { }
 
   ngOnInit(): void {
-   
 
     this.service.traerAssets().subscribe(
       async result => {
@@ -36,6 +38,20 @@ export class ListadoComponent implements OnInit {
       precio= await this.obtenerPrecio(this.token, this.assets[i].id);
       this.assets[i].price="$"+precio.toFixed(4);
     }  
+  }
+
+  irACambio(event){
+
+    var target = event.target || event.srcElement || event.currentTarget;
+    var id = target.attributes.id;
+    var value = id.nodeValue;
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+          "coin": value
+      }
+    };
+
+    this.router.navigate(["/exchange"],  navigationExtras);
   }
 
   onScroll(){
