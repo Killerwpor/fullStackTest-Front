@@ -8,11 +8,12 @@ import { CambioComponent } from './cambio/cambio.component';
 import { ListadoComponent } from './listado/listado.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     CambioComponent,
-    ListadoComponent
+    ListadoComponent,
   ],
   imports: [
     BrowserModule,
